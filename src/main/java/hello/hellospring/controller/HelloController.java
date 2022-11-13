@@ -35,7 +35,7 @@ public class HelloController {
         hello.setName(name);
         return hello; //json 방식으로 반환
     }
-
+// 테스트
     static class Hello{
         private String name;  // ctrl + enter 로 getter, setter 
 
