@@ -3,15 +3,19 @@ package hello.hellospring.service;
 import hello.hellospring.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
 // 테스트 케이스 쉽게 만들기 cmd + shift + t
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) {  //외부에서 넣어주도록 변경 DI
         this.memberRepository = memberRepository;
     }
@@ -20,7 +24,7 @@ public class MemberService {
      * 회원가입
      */
     public Long join(Member member){
-        //같으 이름이 있는 중복회원X
+        //같은 이름이 있는 중복회원X
         //Optional<Member> result = memberRepository.findByName(member.getName()); // cmd + opt + v 앞에 = 만들어줌
         // ifPresent() Optional 객체가 값을 가지고 있다면 true, 값이 없다면 false 리턴
         //result.orElseGet()
