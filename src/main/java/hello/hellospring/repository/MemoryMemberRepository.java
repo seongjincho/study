@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Repository
+//@Repository
 public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> store = new HashMap<>();  // 실무에서는 동시성 문제를 고려해 ConcurrentHashMap룰 사용
     private static long sequence = 0L; // 실무에서는 동시성 문제를 고려해  AtomicLong를 사용

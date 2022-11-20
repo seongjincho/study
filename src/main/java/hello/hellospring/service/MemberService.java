@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class MemberService {
 // 테스트 케이스 쉽게 만들기 cmd + shift + t
 
     private final MemberRepository memberRepository;
 
-    @Autowired
+    //@Autowired
     public MemberService(MemberRepository memberRepository) {  //외부에서 넣어주도록 변경 DI
         this.memberRepository = memberRepository;
     }
