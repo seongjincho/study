@@ -2,34 +2,36 @@ package hello.hellospring.service;
 
 import hello.hellospring.Member;
 import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-// 자바 코드만 있는 단위 테스트 (통합 테스트보다는 단위테스트를 잘 만드는게 중요하다 )
-class MemberServiceTest {
+// 스프링 통합 테스트
+// 2개의 어노테이션이 필요함 간편하게 처리가능
+@SpringBootTest
+@Transactional   // @Commit 은 데이터를 커밋함
+class MemberServiceIntegrationTest {
 
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
-    @BeforeEach // 동작하기전에 넣어줌
-    public void beforeEach(){
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
+    // 이 부분을 @Transactional 이 처리 해준다
+//    @BeforeEach // 동작하기전에 넣어줌
+//    public void beforeEach(){
+//        memberRepository = new MemoryMemberRepository();
+//        memberService = new MemberService(memberRepository);
+//    }
+//
+//    @AfterEach  // 테스트 순서가 보장되지 않기때문에 값을 초기화 시키기 위해 메소드가 끝날때마다 실행
+//    public void afterEach(){
+//        memberRepository.clearStore();
+//    }
 
-    @AfterEach  // 테스트 순서가 보장되지 않기때문에 값을 초기화 시키기 위해 메소드가 끝날때마다 실행
-    public void afterEach(){
-        memberRepository.clearStore();
-    }
-
-
-    //method 한글로 바꿔도 된다
     @Test
     void 회원가입() {
         //given  주어진
@@ -69,11 +71,5 @@ class MemberServiceTest {
         //then
     }
 
-    @Test
-    void findMembers() {
-    }
 
-    @Test
-    void findOne() {
-    }
 }
