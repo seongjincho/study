@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class JpaMemberRepository implements MemberRepository{
 
-    private final EntityManager em;  // jpa를 사용하려면 EntityManager를 주입 받아야한다
+    private final EntityManager em;  // jpa를 사용하려면 EntityManager를 주입 받아야한다 , jpa안에서 hibernate라는 구현체를 사용
 
     public JpaMemberRepository(EntityManager em) {
         this.em = em;
