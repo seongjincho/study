@@ -36,7 +36,7 @@ class MemberServiceIntegrationTest {
     void 회원가입() {
         //given  주어진
         Member member = new Member();
-        member.setName("spring");
+        member.setName("spring100");
         //when 상황
         Long saveId = memberService.join(member);
 

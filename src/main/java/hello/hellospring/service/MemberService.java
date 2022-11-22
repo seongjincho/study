@@ -5,11 +5,13 @@ import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 //@Service
+@Transactional // jpa를 사용할때 주의점 트랜잭션이 항상 있어야함
 public class MemberService {
 // 테스트 케이스 쉽게 만들기 cmd + shift + t
 
