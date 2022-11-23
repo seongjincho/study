@@ -19,6 +19,8 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        System.out.println("memberService.getClass() = " + memberService.getClass());
+        //class hello.hellospring.service.MemberService$$EnhancerBySpringCGLIB$$b2a0a49c
     }
     /*
     셍상자 주입 (생성자 주입 권장)
